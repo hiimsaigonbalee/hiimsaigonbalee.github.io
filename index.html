@@ -4,118 +4,815 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Lê Huỳnh Ngọc Bắc</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #3b82f6;
+      --text-color: #1f2937;
+      --light-text: #6b7280;
+      --background: #f3f4f6;
+      --card-bg: #ffffff;
+      --border-radius: 12px;
+      --section-spacing: 2rem;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
+      background-color: var(--background);
+      color: var(--text-color);
       line-height: 1.6;
+      font-size: 16px;
     }
-    header {
-      background-color: #0078d7;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 5px 0;
-      font-size: 1.2rem;
-    }
+
     .container {
-      max-width: 900px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    section {
-      margin-bottom: 20px;
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 3rem 0;
+      position: relative;
+      overflow: hidden;
     }
-    section h2 {
-      border-bottom: 2px solid #0078d7;
-      padding-bottom: 5px;
-      color: #0078d7;
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: var(--background);
+      clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 5px 0;
-    }
-    footer {
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 10px 0;
-      margin-top: 20px;
-      background: #0078d7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .social-links a:hover {
+      background-color: white;
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      padding: 3rem 0;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-bottom: var(--section-spacing);
+      transform: translateY(0);
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.2rem;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    section h2::after {
+      content: "";
+      flex-grow: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent-color), transparent);
+      margin-left: 0.5rem;
+    }
+
+    .section-icon {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
+    /* Skills */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill-category {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .skill-category h3 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .skill-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      border-radius: 4px;
+    }
+
+    /* Experience & Education */
+    .timeline {
+      position: relative;
+      margin-left: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background-color: #e5e7eb;
+    }
+
+    .timeline-item {
+      padding-left: 30px;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--light-text);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.2rem;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .tech-tag {
+      background-color: #e5e7eb;
+      color: var(--text-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* Contact Form */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-icon {
+      background-color: var(--accent-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color var(--transition-speed) ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent-color);
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.8rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .footer-nav a:hover {
       color: white;
     }
-    a {
-      color: #0078d7;
-      text-decoration: none;
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+      transform: translateY(20px);
     }
-    a:hover {
-      text-decoration: underline;
+
+    .scroll-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
     }
+
+    .scroll-to-top:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Progress bar */
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background: var(--background);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--accent-color);
+      width: 0%;
+    }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: #e5e7eb;
+    }
+
+    /* Dark mode */
+    .dark-mode {
+      --primary-color: #3b82f6;
+      --secondary-color: #2563eb;
+      --accent-color: #60a5fa;
+      --text-color: #f3f4f6;
+      --light-text: #9ca3af;
+      --background: #111827;
+      --card-bg: #1f2937;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 0;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-container {
+        flex-direction: column;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1s; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Lê Huỳnh Ngọc Bắc</h1>
-    <p>Mobile Developer | Sinh viên năm 4 ngành Công nghệ Phần mềm</p>
-  </header>
-
-  <div class="container">
-    <section>
-      <h2>Giới thiệu bản thân</h2>
-      <p>Tôi là một Mobile Developer đam mê tạo ra các ứng dụng di động sáng tạo và thân thiện với người dùng. Với nền tảng kiến thức về Công nghệ Phần mềm, tôi luôn tìm kiếm cơ hội để phát triển bản thân và mang lại giá trị thông qua công nghệ.</p>
-    </section>
-
-    <section>
-      <h2>Kỹ năng</h2>
-      <ul>
-        <li><strong>Ngôn ngữ lập trình:</strong> Dart (Flutter), Java, Kotlin, Swift</li>
-        <li><strong>Kỹ năng phát triển ứng dụng:</strong> Thiết kế UI/UX, xử lý API, quản lý trạng thái</li>
-        <li><strong>Công cụ & nền tảng:</strong> Git, Firebase, RESTful APIs, SQLite</li>
-        <li><strong>Kỹ năng mềm:</strong> Giao tiếp, làm việc nhóm, quản lý thời gian</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Kinh nghiệm làm việc</h2>
-      <p><strong>Thực tập sinh Mobile Developer:</strong> Flutter Intern tại Công ty TNHH TTL</p>
-      <p><strong>Dự án cá nhân:</strong> VivuAppShip, VivuAppCustomer, VivuAppDriver, UltimateChess</p>
-    </section>
-
-    <section>
-      <h2>Học vấn</h2>
-      <p>Chuyên ngành Công nghệ Phần mềm, Đại học Sư phạm TP.HCM</p>
-    </section>
-
-    <section>
-      <h2>Dự án nổi bật</h2>
-      <ul>
-        <li><strong>Ứng dụng Quản lý Công việc:</strong> Ứng dụng hỗ trợ quản lý công việc cá nhân, cho phép tạo, sửa, và theo dõi tiến độ công việc hàng ngày. <em>(Công nghệ: Flutter, Firebase, Provider)</em></li>
-        <li><strong>Ứng dụng Đặt món ăn Online:</strong> Ứng dụng đơn giản cho phép người dùng đặt món ăn từ nhà hàng, với tính năng thanh toán trực tuyến. <em>(Công nghệ: Flutter, RESTful APIs, Stripe)</em></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Liên hệ</h2>
-      <p><strong>Email:</strong> <a href="mailto:lehuynhngocbac@gmail.com">lehuynhngocbac@gmail.com</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/hiimsaigonbalee">https://github.com/hiimsaigonbalee</a></p>
-    </section>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Lê Huỳnh Ngọc Bắc. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-content fade-in">
+        <img src="/api/placeholder/400/400" alt="Lê Huỳnh Ngọc Bắc" class="profile-img">
+        <h1>Lê Huỳnh Ngọc Bắc</h1>
+        <p>Mobile Developer | Sinh viên năm 4 ngành Công nghệ Phần mềm</p>
+        <div class="social-links">
+          <a href="https://github.com/hiimsaigonbalee" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:lehuynhngocbac@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card fade-in delay-1">
+      <h2><i class="fas fa-user section-icon"></i> Giới thiệu bản thân</h2>
+      <p>Tôi là một Mobile Developer đam mê tạo ra các ứng dụng di động sáng tạo và thân thiện với người dùng. Với nền tảng kiến thức về Công nghệ Phần mềm và kinh nghiệm phát triển ứng dụng Flutter, tôi luôn tìm kiếm cơ hội để phát triển bản thân và mang lại giá trị thông qua công nghệ.</p>
+      <p style="margin-top: 10px;">Với khả năng học hỏi nhanh và đam mê giải quyết vấn đề, tôi mong muốn được tham gia vào các dự án thực tế, áp dụng kiến thức đã học để tạo ra những sản phẩm chất lượng cao, đáp ứng nhu cầu của người dùng và góp phần vào sự phát triển của ngành công nghệ di động.</p>
+    </section>
+
+    <section class="card fade-in delay-2">
+      <h2><i class="fas fa-laptop-code section-icon"></i> Kỹ năng</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Ngôn ngữ lập trình</h3>
+          
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Dart (Flutter)</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Java</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Kotlin</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Swift</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Phát triển ứng dụng</h3>
+          
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Thiết kế UI/UX</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Xử lý API</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Quản lý trạng thái</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Công cụ & Nền tảng</h3>
+          
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Git</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Firebase</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>RESTful APIs</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>SQLite</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card fade-in delay-3">
+      <h2><i class="fas fa-briefcase section-icon"></i> Kinh nghiệm làm việc</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Flutter Intern - Công ty TNHH TTL</h3>
+          <div class="timeline-date">
+            <i class="far fa-calendar-alt"></i> Tháng 6/2024 - Hiện tại
+          </div>
+          <p>Phát triển và bảo trì các ứng dụng di động sử dụng Flutter. Tham gia vào quá trình thiết kế, xây dựng và triển khai các tính năng mới. Làm việc trong nhóm Agile và hợp tác với các nhóm thiết kế và backend.</p>
+          <ul style="list-style-type: disc; margin-left: 20px; margin-top: 10px;">
+            <li>Phát triển giao diện người dùng responsive và thân thiện</li>
+            <li>Tích hợp RESTful APIs và Firebase</li>
+            <li>Tối ưu hóa hiệu suất ứng dụng</li>
+            <li>Sử dụng Git để quản lý mã nguồn</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card fade-in delay-3">
+      <h2><i class="fas fa-graduation-cap section-icon"></i> Học vấn</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Chuyên ngành Công nghệ Phần mềm - Đại học Sư phạm TP.HCM</h3>
+          <div class="timeline-date">
+            <i class="far fa-calendar-alt"></i> 2021 - 2025
+          </div>
+          <p>Nghiên cứu về các nguyên lý cơ bản của lập trình, cấu trúc dữ liệu, thuật toán, phát triển ứng dụng di động và thiết kế phần mềm. Tham gia các dự án nhóm và các cuộc thi lập trình.</p>
+          <p style="margin-top: 10px;"><strong>GPA:</strong> 3.7/4.0</p>
+          <p><strong>Các môn học chính:</strong> Lập trình di động, Cơ sở dữ liệu, Kỹ thuật phần mềm, Phát triển ứng dụng web, Trí tuệ nhân tạo</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card fade-in delay-4">
+      <h2><i class="fas fa-code-branch section-icon"></i> Dự án nổi bật</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/api/placeholder/400/200" alt="VivuApp" class="project-img">
+          <div class="project-content">
+            <h3 class="project-title">VivuApp - Ứng dụng đặt dịch vụ</h3>
+            <p>Một hệ thống ứng dụng gồm 3 phần: khách hàng, tài xế và chủ cửa hàng. Cho phép người dùng đặt dịch vụ, theo dõi đơn hàng và thanh toán trực tuyến.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Google Maps API</span>
+              <span class="tech-tag">Provider</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="/api/placeholder/400/200" alt="UltimateChess" class="project-img">
+          <div class="project-content">
+            <h3 class="project-title">UltimateChess</h3>
+            <p>Ứng dụng cờ vua trực tuyến cho phép người chơi tham gia các trận đấu với AI hoặc người chơi khác, có tính năng chat và xếp hạng.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Bloc</span>
+              <span class="tech-tag">WebSocket</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="/api/placeholder/400/200" alt="Task Manager" class="project-img">
+          <div class="project-content">
+            <h3 class="project-title">Ứng dụng Quản lý Công việc</h3>
+            <p>Ứng dụng hỗ trợ quản lý công việc cá nhân, cho phép tạo, sửa, và theo dõi tiến độ công việc hàng ngày với giao diện trực quan.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Provider</span>
+              <span class="tech-tag">Local Notifications</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="/api/placeholder/400/200" alt="Food Delivery" class="project-img">
+          <div class="project-content">
+            <h3 class="project-title">Ứng dụng Đặt món ăn Online</h3>
+            <p>Ứng dụng cho phép người dùng đặt món ăn từ nhà hàng, với tính năng thanh toán trực tuyến và theo dõi đơn hàng theo thời gian thực.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">RESTful APIs</span>
+              <span class="tech-tag">Stripe</span>
+              <span class="tech-tag">GetX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card fade-in delay-5">
+      <h2><i class="fas fa-envelope section-icon"></i> Liên hệ</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:lehuynhngocbac@gmail.com">lehuynhngocbac@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div>
+              <h3>GitHub</h3>
+              <p><a href="https://github.com/hiimsaigonbalee" target="_blank">github.com/hiimsaigonbalee</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div>
+              <h3>LinkedIn</h3>
+              <p><a href="https://linkedin.com/in/" target="_blank">linkedin.com/in/</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h3>Địa chỉ</h3>
